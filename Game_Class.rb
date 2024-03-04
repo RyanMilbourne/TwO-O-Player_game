@@ -22,10 +22,9 @@ class Game
   end
 
   def check_lives
-    if @player1.lives <= 0 || @player2.lives <=0
-      # puts "#{@current_player.name} wins with a score of #{@current_player.lives_remaining}"
+    if @player1.lives <= 0 || @player2.lives <=0 # if either player has no lives, call game_over method
       game_over
-    elsif @question_number >= 20
+    elsif @question_number >= 20 # if we reach beyond amount of questions, call game_over method
       game_over
     else
       turn
@@ -35,7 +34,14 @@ class Game
   def game_over
     puts "" # add new line
     puts "---- GAME OVER ----"
-    puts "#{@current_player.name} wins with a score of #{@current_player.lives_remaining}"
+    # return player with higher points or tie
+      if @player1.lives > @player2.lives
+        puts "#{@player1.name} wins with a score of: #{@player1.lives_left}"
+      elsif @player2.lives > @player1.lives
+        puts "#{@player2.name} wins with a score of: #{@player2.lives_left}"
+      else
+        puts "Tie game!"
+      end
     puts "Good bye!"
   end
 

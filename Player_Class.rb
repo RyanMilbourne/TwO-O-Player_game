@@ -14,6 +14,10 @@ class Player
     @lives -= 1
   end
 
+  def lives_left
+    "#{@lives}/#{@@total_lives}"
+  end
+
   private
 
   @@total_lives = 3 # Establish the total amount of lives (private)
